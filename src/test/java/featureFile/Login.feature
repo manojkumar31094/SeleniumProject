@@ -7,6 +7,6 @@ Feature: Login
 
   @tag2
   Scenario Outline: Login 
-  Given Enter the application url ""
+  Given Enter the application url "<uname>"
 
    

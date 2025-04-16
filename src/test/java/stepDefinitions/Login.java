@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -15,7 +16,7 @@ public class Login {
 	public void enter_the_application_url(String url) {
 	   
 		driver = df.getDriver();
-		driver.get("https://mvnrepository.com/");
+		driver.findElement(By.linkText("My Account")).click();
 		
 	}
 }
