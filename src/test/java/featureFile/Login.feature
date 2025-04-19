@@ -7,6 +7,13 @@ Feature: Login
 
   @tag2
   Scenario Outline: Login 
-  Given Enter the application url "<uname>"
-
+  Then Click on login with Staff AD button
+  Then Enter the user name "<uname>"
+  Then Enter the password "<pwd>"
+  And Click on the Sign in button
+  Then User should see the Dashboard page
+  
+  Examples:
+	|uname|pwd|
+	|nageshwar@naditek-myairports.my|Naditek.12345*|
    

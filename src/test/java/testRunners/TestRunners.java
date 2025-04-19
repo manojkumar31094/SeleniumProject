@@ -8,7 +8,10 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "D:\\Eclipse\\SeleniumProject\\src\\test\\java\\featureFile",
 				glue = {"stepDefinitions","hooks"}, dryRun = false,
-				plugin = { "pretty","html:target/cucumber-reports.html" })
+				publish = true,
+				plugin = { "pretty",                                // human-readable console output
+				        "html:target/cucumber-reports.html",     // HTML report
+							})
 public class TestRunners {
 	
 
