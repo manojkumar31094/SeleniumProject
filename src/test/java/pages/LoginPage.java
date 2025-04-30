@@ -36,6 +36,9 @@ public class LoginPage {
 	 @FindBy(xpath = "//span[text()='PCD Dashboard']")
 	 WebElement dashboard;
 	 
+	 @FindBy(id = "passwordError")
+	 WebElement pwderror;
+	 
 	
 
 	public LoginPage(WebDriver driver) {
@@ -68,6 +71,11 @@ public class LoginPage {
 	 
 	 public boolean loginTestPass() {
 		 return dashboard.isDisplayed();
+	 }
+	 
+	 public boolean loginErrorMessage() {
+		 System.out.println(pwderror);
+		 return pwderror.isDisplayed();
 	 }
 	 
 	 

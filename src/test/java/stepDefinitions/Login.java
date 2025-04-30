@@ -9,6 +9,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import junit.framework.Assert;
+import pages.EditLoaDetails;
 import pages.LoginPage;
 
 public class Login {
@@ -17,6 +18,7 @@ public class Login {
 	
 	WebDriver driver;
 	LoginPage lp;
+	EditLoaDetails ed;
 	
 	
 	@Then("Click on login with Staff AD button")
@@ -50,7 +52,61 @@ public class Login {
 		
 		lp = new LoginPage(driver);
 		Assert.assertTrue(lp.loginTestPass());
-	   
+		
 	}
+	
+	@Then("Enter the valid user name {string}")
+	public void enter_the_valid_user_name(String string) {
+		lp = new LoginPage(driver);
+	    lp.enterEmail(string);
+	}
+	
+	@Then("Enter the invalid password {string}")
+	public void enter_the_invalid_password(String string) {
+		lp = new LoginPage(driver);
+	   lp.enterPassword(string);
+	}
+	
+	@Then("User should see the error message")
+	public void user_should_see_the_error_message() {
+		lp = new LoginPage(driver);
+	   Assert.assertTrue(lp.loginErrorMessage());
+	}
+
+	//---------------Edit LOA Details
+	
+	@Then("Click on the LOA in the side menu")
+	public void click_on_the_loa_in_the_side_menu() throws InterruptedException {
+		ed = new EditLoaDetails(driver);
+		ed.clickLoaSideMenu();
+	}
+	
+	@Then("Select an loa from the list")
+	public void select_an_loa_from_the_list() {
+		ed = new EditLoaDetails(driver);
+		ed.selectLoa();
+		
+	}
+	
+	@Then("click on the edit button in the loa details")
+	public void click_on_the_edit_button_in_the_loa_details() {
+		ed = new EditLoaDetails(driver);
+		ed.clickEditButton();
+	}
+	
+	@Then("Edit the Email message {string}")
+	public void edit_the_email_message(String string) {
+		ed = new EditLoaDetails(driver);
+		ed.editEmailMessage(string);
+		
+	}
+	
+	@Then("Click on the loa details save button")
+	public void click_on_the_loa_details_save_button() {
+		ed = new EditLoaDetails(driver);
+		ed.clickOnSave();
+	}
+
+
 
 }

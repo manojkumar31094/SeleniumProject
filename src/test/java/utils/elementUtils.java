@@ -6,8 +6,10 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
+import java.util.Iterator;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,9 +28,9 @@ public class elementUtils {
 		ele.click();
 	}
 	
-	public void enterText(WebElement et,String sk) {
-		et = explicitWait(et, 10);
-		et.sendKeys(sk);
+	public void enterText(WebElement et, String txt) {
+		//et = explicitWait(et, 10);
+		et.sendKeys(txt);
 	}
 	
 	public WebElement explicitWait(WebElement element, long duration) {
@@ -68,6 +70,18 @@ public class elementUtils {
 	            e.printStackTrace();
 	        }
 	    }
+	 
+	 public void clearText(WebElement element) {
+		 String text =element.getAttribute("value");
+		 for(int r=0; r<text.length();r++) {
+			 element.sendKeys(Keys.BACK_SPACE);
+		 }
+	 }
+	 
+	 public void scrollUntilVisiability(WebElement e,WebDriver driver) {
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+	        js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", e);
+	 }
 	
 
 }
